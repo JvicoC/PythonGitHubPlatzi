@@ -1,6 +1,6 @@
-# JUEGO PIRDRA PAPEL TIJERA
+# JUEGO PIEDRA PAPEL TIJERA
 Para correr el juego en pyhton se debe ralizar el siguiente pasos
-```
+```sh
 PASOS NECESARIOS
 PRIMERA SE CREO LA CARPETA Y LUEGO EL ARCHIVO .PY
 luego se enlazo con github
@@ -16,4 +16,16 @@ con los siguientes comandos
  - se hizo el respectivo commit git commit -m "añadiendo cambios"
  - se subio a github git push origin master
  -  y hasta ahi los cambios haciendo nuevamente git en cada cambio
+```
+
+## Game project
+```sh
+git clone
+cd game
+crear entorno virtual 
+python3 -m venv nombreenv
+source nombreenv/bin/activate --> linux
+source nombreenv/Scripts/activate --> windows
+pip3 install -r requeriments.txt
+python3 main.py
 ```
