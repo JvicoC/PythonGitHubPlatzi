@@ -1,28 +1,36 @@
 import utils
+import read_csv
+import charts
+import pandas as pd
 
-lista1 = [
-    {
-        'pais':'col',
-        'population':500
-    },
-    {
-        'pais':'bol',
-        'population':300
-    },
-    {
-        'pais':'per',
-        'population':200
-    }
-]
+def run():
+  '''
+  data = list(filter(lambda item : item['Continent'] == 'South America',data))
+  countries = list(map(lambda x: x['Country'], data))
+  percentages = list(map(lambda x: x['World Population Percentage'], data))
+  '''
 
-def run01():
-    keys, values=utils.get_population()
+  df = pd.read_csv('data.csv')#dataframe
 
-    print(f'Keys es {keys},y lo valores es {values}')
+  df = df[df['Continent'] == 'Africa'] #data = list(filter(lambda item : item['Continent'] == 'South America',data))
 
-    pais=input('Tipo de pais: ')
+  countries = df['Country'].values #countries = list(map(lambda x: x['Country'], data))
 
-    print(f'el resultado es :{utils.pop_by_country(lista1,pais)}.')
+  percentages = df['World Population Percentage'].values #percentages = list(map(lambda x: x['World Population Percentage'], data))
 
-if __name__ =='__main__':
-    run01()
+  charts.generate_pie_chart(countries, percentages)
+
+  data = read_csv.read_csv('data.csv')
+  country = input('Type Country => ')
+  print(country)
+
+  result = utils.population_by_country(data, country)
+
+  if len(result) > 0:
+    country = result[0]
+    print(country)
+    labels, values = utils.get_population(country)
+    charts.generate_bar_chart(country['Country'], labels, values)
+
+if __name__ == '__main__':
+  run()
